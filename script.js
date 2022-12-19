@@ -4,19 +4,15 @@ let btn = document.querySelector("#btn");
 
 let loadData= () =>{
     fetch("https://api.chucknorris.io/jokes/random")
-    .then((res)=>{
-        return res.json();
-    }).then((joke)=>
-
-    {   
+    .then((res)=> res.json())
+    .then((joke)=> {   
         jokep.innerHTML = joke.value;
-        if(joke.categories[0] == undefined){
+        if(joke.categories[0] == undefined)
             category.innerHTML = ""
-        }else{
-        category.innerHTML = joke.categories[0];}
-
-    })
+        else
+            category.innerHTML = joke.categories[0];
+    }).catch(err => {console.log(err)})
+    
 }
-btn.addEventListener("click", loadData)
-
 loadData()
+btn.addEventListener("click", loadData)
